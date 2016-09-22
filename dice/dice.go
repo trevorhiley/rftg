@@ -1,18 +1,18 @@
 package dice
 
 import (
-  "math/rand"
-  "time"
-  "fmt"
+	"math/rand"
+	"time"
 )
 
-type dice struct {
-  rolledNumber int
+//Die Struct for rolling a die
+type Die struct {
+	rolledNumber int
 }
 
-func (d *dice) roll()  int  {
-  r := rand.New(rand.NewSource(time.Now().UnixNano()))
-  num := r.Intn(6) + 1
-  d.rolledNumber = num
-  return d.rolledNumber
+//Roll the die
+func (d *Die) Roll(sides int) int {
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	d.rolledNumber = r.Intn(sides)
+	return d.rolledNumber
 }

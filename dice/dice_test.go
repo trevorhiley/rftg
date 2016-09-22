@@ -1,23 +1,21 @@
 package dice
 
 import (
-  "testing"
+	"testing"
 )
 
-func TestDiceRoll(t *testing.T)  {
-  dice := dice{}
-  found:= false
-  start := 1
-  dice.roll()
-  for start <= 6 {
-    if dice.rolledNumber == start {
-      found = true
-      break
-    }
-    start++
-  }
-  if !found {
-    t.Fail()
-  }
-  return
+func TestDiceRoll(t *testing.T) {
+	diceRolled := Die{}
+	found := false
+	sides := 6
+	diceRolled.Roll(sides)
+	for i := 1; i <= sides; i++ {
+		if diceRolled.rolledNumber == i {
+			found = true
+			break
+		}
+	}
+	if !found {
+		t.Error("Dice roll was", diceRolled.rolledNumber)
+	}
 }
