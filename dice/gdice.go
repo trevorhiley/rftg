@@ -93,3 +93,8 @@ func (g *GDice) Roll() {
 	die.Roll(6)
 	g.rollResult = g.sides[die.rolledNumber]
 }
+
+//RollResult getter
+func (g *GDice) RollResult() string {
+	return g.rollResult
+}

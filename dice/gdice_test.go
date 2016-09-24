@@ -23,6 +23,14 @@ func TestConsumptionDieCreation(t *testing.T) {
 				t.Error(v, "die sides != 6")
 			}
 
+			if die.color == "" {
+				t.Error("no dice color set")
+			}
+
+			if die.tradeValue > 6 {
+				t.Error("dice trade value too large")
+			}
+
 			correctSides := getDieSides()
 
 			die.Roll()
