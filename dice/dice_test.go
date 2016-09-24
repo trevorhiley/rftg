@@ -9,7 +9,7 @@ func TestDiceRoll(t *testing.T) {
 	found := false
 	sides := 6
 	diceRolled.Roll(sides)
-	for i := 1; i <= sides; i++ {
+	for i := 0; i <= sides-1; i++ {
 		if diceRolled.rolledNumber == i {
 			found = true
 			break
