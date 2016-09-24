@@ -4,7 +4,7 @@ package dice
 type GDice struct {
 	name       string
 	color      string
-	sides      [6]string
+	sides      []string
 	tradeValue int
 	rollResult string
 }
@@ -38,49 +38,49 @@ func CreateDie(diceName string, rolledValue string) GDice {
 		die = GDice{
 			name:       CONSUMPTION,
 			color:      "purple",
-			sides:      [6]string{EXPLORE, DEVELOP, SHIP, SHIP, SHIP, WILD},
+			sides:      []string{EXPLORE, DEVELOP, SHIP, SHIP, SHIP, WILD},
 			tradeValue: 0,
 		}
 	case HOME:
 		die = GDice{
 			name:       HOME,
 			color:      "white",
-			sides:      [6]string{EXPLORE, EXPLORE, DEVELOP, SETTLE, SHIP, PRODUCE},
+			sides:      []string{EXPLORE, EXPLORE, DEVELOP, SETTLE, SHIP, PRODUCE},
 			tradeValue: 0,
 		}
 	case MILITARY:
 		die = GDice{
 			name:       MILITARY,
 			color:      "red",
-			sides:      [6]string{EXPLORE, DEVELOP, DEVELOP, SETTLE, SETTLE, WILD},
+			sides:      []string{EXPLORE, DEVELOP, DEVELOP, SETTLE, SETTLE, WILD},
 			tradeValue: 0,
 		}
 	case NOVELTY:
 		die = GDice{
 			name:       NOVELTY,
 			color:      "blue",
-			sides:      [6]string{EXPLORE, PRODUCE, PRODUCE, SHIP, SHIP, WILD},
+			sides:      []string{EXPLORE, PRODUCE, PRODUCE, SHIP, SHIP, WILD},
 			tradeValue: 3,
 		}
 	case RARE:
 		die = GDice{
 			name:       RARE,
 			color:      "brown",
-			sides:      [6]string{EXPLORE, DEVELOP, DEVELOP, PRODUCE, SHIP, WILD},
+			sides:      []string{EXPLORE, DEVELOP, DEVELOP, PRODUCE, SHIP, WILD},
 			tradeValue: 4,
 		}
 	case ALIEN:
 		die = GDice{
 			name:       ALIEN,
 			color:      "yellow",
-			sides:      [6]string{DEVELOP, SETTLE, PRODUCE, WILD, WILD, WILD},
+			sides:      []string{DEVELOP, SETTLE, PRODUCE, WILD, WILD, WILD},
 			tradeValue: 6,
 		}
 	case GENES:
 		die = GDice{
 			name:       GENES,
 			color:      "green",
-			sides:      [6]string{EXPLORE, SETTLE, SETTLE, PRODUCE, WILD, WILD},
+			sides:      []string{EXPLORE, SETTLE, SETTLE, PRODUCE, WILD, WILD},
 			tradeValue: 5,
 		}
 	}
