@@ -2,85 +2,92 @@ package game
 
 //GDice structure to hold dice defs
 type GDice struct {
-	Name       string
-	Color      string
-	Sides      []string
+	Name       DiceType
+	Color      DiceColor
+	Sides      []DiceSide
 	TradeValue int
-	RollResult string
+	RollResult DiceSide
 }
 
-//constants for dice rolled values
-const (
-	EXPLORE = "Explore"
-	DEVELOP = "Develop"
-	SETTLE  = "Settle"
-	PRODUCE = "Produce"
-	SHIP    = "Ship"
-	WILD    = "Wild"
-)
+//DiceType for setting dice type constants
+type DiceType int
+
+//DiceColor for setting dice color constants
+type DiceColor int
 
 //dice Names
 const (
-	CONSUMPTION = "Consumption"
-	HOME        = "Home"
-	MILITARY    = "Military"
-	NOVELTY     = "Novelty"
-	RARE        = "Rare Elements"
-	ALIEN       = "Alien Technology"
-	GENES       = "Genes"
+	Consumption DiceType = iota + 1
+	Home
+	Military
+	Novelty
+	Rare
+	Alien
+	Genes
+)
+
+//DiceColor constants for dice colors
+const (
+	Purple DiceColor = iota + 1
+	Yellow
+	Green
+	Red
+	White
+	Blue
+	Brown
 )
 
 //CreateDie creates a purple die
-func CreateDie(diceName string, rolledValue string) GDice {
+func CreateDie(diceName DiceType, rolledValue DiceSide) GDice {
 	die := GDice{}
 	switch diceName {
-	case CONSUMPTION:
+	case Consumption:
 		die = GDice{
-			Name:       CONSUMPTION,
-			Color:      "purple",
-			Sides:      []string{EXPLORE, DEVELOP, SHIP, SHIP, SHIP, WILD},
+			Name:       diceName,
+			Color:      Purple,
+			Sides:      []DiceSide{Explore, Develop, Ship, Ship, Ship, Wild},
 			TradeValue: 0,
 		}
-	case HOME:
+	case Home:
 		die = GDice{
-			Name:       HOME,
-			Color:      "white",
-			Sides:      []string{EXPLORE, EXPLORE, DEVELOP, SETTLE, SHIP, PRODUCE},
+			Name:       diceName,
+			Color:      White,
+			Sides:      []DiceSide{Explore, Explore, Develop, Settle, Ship, Produce},
 			TradeValue: 0,
 		}
-	case MILITARY:
+	case Military:
 		die = GDice{
-			Name:       MILITARY,
-			Color:      "red",
-			Sides:      []string{EXPLORE, DEVELOP, DEVELOP, SETTLE, SETTLE, WILD},
+			Name:       diceName,
+			Color:      Red,
+			Sides:      []DiceSide{Explore, Develop, Develop, Settle, Settle, Wild},
 			TradeValue: 0,
 		}
-	case NOVELTY:
+	case Novelty:
 		die = GDice{
-			Name:       NOVELTY,
-			Color:      "blue",
-			Sides:      []string{EXPLORE, PRODUCE, PRODUCE, SHIP, SHIP, WILD},
+			Name:       diceName,
+			Color:      Blue,
+			Sides:      []DiceSide{Explore, Produce, Produce, Ship, Ship, Wild},
 			TradeValue: 3,
 		}
-	case RARE:
+	case Rare:
 		die = GDice{
-			Name:       RARE,
-			Color:      "brown",
-			Sides:      []string{EXPLORE, DEVELOP, DEVELOP, PRODUCE, SHIP, WILD},
+			Name:       diceName,
+			Color:      Brown,
+			Sides:      []DiceSide{Explore, Develop, Develop, Produce, Ship, Wild},
 			TradeValue: 4,
 		}
-	case ALIEN:
+	case Alien:
 		die = GDice{
-			Name:       ALIEN,
-			Color:      "yellow",
-			Sides:      []string{DEVELOP, SETTLE, PRODUCE, WILD, WILD, WILD},
+			Name:       diceName,
+			Color:      Yellow,
+			Sides:      []DiceSide{Develop, Settle, Produce, Wild, Wild, Wild},
 			TradeValue: 6,
 		}
-	case GENES:
+	case Genes:
 		die = GDice{
-			Name:       GENES,
-			Color:      "green",
-			Sides:      []string{EXPLORE, SETTLE, SETTLE, PRODUCE, WILD, WILD},
+			Name:       diceName,
+			Color:      Green,
+			Sides:      []DiceSide{Explore, Settle, Settle, Produce, Wild, Wild},
 			TradeValue: 5,
 		}
 	}

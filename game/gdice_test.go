@@ -2,18 +2,32 @@ package game
 
 import "testing"
 
-func getDieSides() []string {
-	return []string{EXPLORE, DEVELOP, SETTLE, PRODUCE, SHIP, WILD}
+func getDieSides() []DiceSide {
+	return []DiceSide{Explore, Develop, Settle, Produce, Ship, Wild}
 }
 
-func getDieTypes() []string {
-	return []string{HOME, ALIEN, RARE, CONSUMPTION, MILITARY, GENES, NOVELTY}
+func getDieTypes() []DiceType {
+	return []DiceType{Home, Alien, Rare, Consumption, Military, Genes, Novelty}
+}
+
+func TestDiceSidesString(t *testing.T) {
+	diceString := Explore.String()
+	if diceString != "Explore" {
+		t.Error("Dice side stringer not working")
+	}
+}
+
+func TestStringToDiceSide(t *testing.T) {
+	diceSideConst := StringToDiceSide("Explore")
+	if diceSideConst != Explore {
+		t.Error("Dice string to dice side not working")
+	}
 }
 
 func TestConsumptionDieCreation(t *testing.T) {
 	for _, v := range getDieTypes() {
 		for i := 0; i <= 1000; i++ {
-			die := CreateDie(v, "")
+			die := CreateDie(v, 0)
 
 			if die.Name != v {
 				t.Error(v, "die not wild")
@@ -23,7 +37,7 @@ func TestConsumptionDieCreation(t *testing.T) {
 				t.Error(v, "die sides != 6")
 			}
 
-			if die.Color == "" {
+			if die.Color == 0 {
 				t.Error("no dice color set")
 			}
 
