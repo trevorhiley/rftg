@@ -1,4 +1,4 @@
-package dice
+package game
 
 import "testing"
 
@@ -15,19 +15,19 @@ func TestConsumptionDieCreation(t *testing.T) {
 		for i := 0; i <= 1000; i++ {
 			die := CreateDie(v, "")
 
-			if die.name != v {
+			if die.Name != v {
 				t.Error(v, "die not wild")
 			}
 
-			if len(die.sides) != 6 {
+			if len(die.Sides) != 6 {
 				t.Error(v, "die sides != 6")
 			}
 
-			if die.color == "" {
+			if die.Color == "" {
 				t.Error("no dice color set")
 			}
 
-			if die.tradeValue > 6 {
+			if die.TradeValue > 6 {
 				t.Error("dice trade value too large")
 			}
 
@@ -37,7 +37,7 @@ func TestConsumptionDieCreation(t *testing.T) {
 			foundSide := false
 
 			for _, v := range correctSides {
-				if die.rollResult == v {
+				if die.RollResult == v {
 					foundSide = true
 				}
 			}
