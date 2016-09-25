@@ -9,22 +9,8 @@ type GDice struct {
 	RollResult DiceSide
 }
 
-//DiceType for setting dice type constants
-type DiceType int
-
 //DiceColor for setting dice color constants
 type DiceColor int
-
-//dice Names
-const (
-	Consumption DiceType = iota + 1
-	Home
-	Military
-	Novelty
-	Rare
-	Alien
-	Genes
-)
 
 //DiceColor constants for dice colors
 const (
