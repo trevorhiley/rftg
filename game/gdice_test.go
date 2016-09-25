@@ -24,6 +24,20 @@ func TestStringToDiceSide(t *testing.T) {
 	}
 }
 
+func TestDiceTypesString(t *testing.T) {
+	diceString := Alien.String()
+	if diceString != "Alien Technology" {
+		t.Error("Dice type stringer not working")
+	}
+}
+
+func TestStringToDiceType(t *testing.T) {
+	diceTypeConst := StringToDiceType("Alien Technology")
+	if diceTypeConst != Alien {
+		t.Error("Dice string to dice side not working")
+	}
+}
+
 func TestConsumptionDieCreation(t *testing.T) {
 	for _, v := range getDieTypes() {
 		for i := 0; i <= 1000; i++ {
