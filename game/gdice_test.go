@@ -39,9 +39,20 @@ func TestStringToDiceType(t *testing.T) {
 }
 
 func TestConsumptionDieCreation(t *testing.T) {
+
+	_, err := CreateDie(999, 0)
+
+	if err == nil {
+		t.Error("Improper dice type should create error")
+	}
+
 	for _, v := range getDieTypes() {
 		for i := 0; i <= 1000; i++ {
-			die := CreateDie(v, 0)
+			die, err := CreateDie(v, 0)
+
+			if err != nil {
+				t.Error("die creation error should not have occurred")
+			}
 
 			if die.Name != v {
 				t.Error(v, "die not wild")

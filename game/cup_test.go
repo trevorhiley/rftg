@@ -6,9 +6,12 @@ import (
 
 func TestAddToCup(t *testing.T) {
 	cup := Cup{}
-	cup.AddDieToCup(CreateDie(Home, 0))
-	cup.AddDieToCup(CreateDie(Alien, 0))
-	cup.AddDieToCup(CreateDie(Novelty, 0))
+	die1, _ := CreateDie(Home, 0)
+	die2, _ := CreateDie(Alien, 0)
+	die3, _ := CreateDie(Novelty, 0)
+	cup.AddDieToCup(die1)
+	cup.AddDieToCup(die2)
+	cup.AddDieToCup(die3)
 
 	if len(cup.DiceInCup) != 3 {
 		t.Error("proper number of dice not added")

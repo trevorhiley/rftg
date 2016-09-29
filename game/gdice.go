@@ -1,5 +1,7 @@
 package game
 
+import "errors"
+
 //GDice structure to hold dice defs
 type GDice struct {
 	Name       DiceType
@@ -24,7 +26,7 @@ const (
 )
 
 //CreateDie creates a purple die
-func CreateDie(diceName DiceType, rolledValue DiceSide) GDice {
+func CreateDie(diceName DiceType, rolledValue DiceSide) (GDice, error) {
 	die := GDice{}
 	switch diceName {
 	case Consumption:
@@ -76,8 +78,10 @@ func CreateDie(diceName DiceType, rolledValue DiceSide) GDice {
 			Sides:      []DiceSide{Explore, Settle, Settle, Produce, Wild, Wild},
 			TradeValue: 5,
 		}
+	default:
+		return GDice{}, errors.New("You cannot create a dice of that type")
 	}
-	return die
+	return die, nil
 }
 
 //Roll rolls the gdice
