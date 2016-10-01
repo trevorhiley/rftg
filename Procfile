@@ -1,1 +1,1 @@
-web: api/server
+web: rftg

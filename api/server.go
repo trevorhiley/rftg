@@ -1,4 +1,4 @@
-package main
+package api
 
 import (
 	"encoding/json"
@@ -12,7 +12,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(game.DiceTypeMap())
 }
 
-func main() {
+//Start starts the server
+func Start() {
 	http.HandleFunc("/", handler)
 	http.ListenAndServe(":8080", nil)
 }
