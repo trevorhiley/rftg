@@ -1,26 +1,23 @@
-package main
+package datasvc
 
-import (
-	"fmt"
+import "gopkg.in/redis.v4"
 
-	"gopkg.in/redis.v4"
-)
-
-func main() {
+//Setkey sets a key
+func Setkey(s string) (string, error) {
 	client := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
-		Password: "", // no password set
-		DB:       0,  // use default DB
+		Addr:     "sculpin.redistogo.com:10125",
+		Password: "b8581cc0a868efb154738c497aff8588", // no password set
+		DB:       0,                                  // use default DB
 	})
 
-	err := client.Set("key", "value", 0).Err()
+	err := client.Set("key", s, 0).Err()
 	if err != nil {
 		panic(err)
 	}
 
 	val, err := client.Get("key").Result()
 	if err != nil {
-		panic(err)
+		return "", err
 	}
-	fmt.Println("key", val)
+	return val, nil
 }
