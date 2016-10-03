@@ -26,14 +26,14 @@ func redishandler(w http.ResponseWriter, r *http.Request) {
 
 //Start starts the server
 func Start() {
+	datasvc.CreateClient()
 	port := os.Getenv("PORT")
-	fmt.Print("Server starting")
 	http.HandleFunc("/redis", redishandler)
 	http.HandleFunc("/", handler)
 
-	if port != "" {
-		http.ListenAndServe(":"+port, nil)
-	} else {
-		http.ListenAndServe(":8080", nil)
+	if port == "" {
+		port = "8080"
 	}
+	fmt.Printf("Server starting on port %s\n", port)
+	http.ListenAndServe(":"+port, nil)
 }

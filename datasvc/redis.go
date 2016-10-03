@@ -7,7 +7,10 @@ import (
 	"gopkg.in/redis.v4"
 )
 
-func createClient() *redis.Client {
+var client *redis.Client
+
+//CreateClient creates redis client for all connections
+func CreateClient() {
 	redisenv := os.Getenv("REDISTOGO_URL")
 	redishost := ""
 	redispass := ""
@@ -21,19 +24,16 @@ func createClient() *redis.Client {
 		redishost = "localhost:6379"
 	}
 
-	client := redis.NewClient(&redis.Options{
+	client = redis.NewClient(&redis.Options{
 		Addr:     redishost,
 		Password: redispass, // no password set
 		DB:       0,         // use default DB
 	})
 
-	return client
 }
 
 //Setkey sets a key
 func Setkey(s string) (string, error) {
-	client := createClient()
-
 	err := client.Set("key", s, 0).Err()
 	if err != nil {
 		panic(err)
