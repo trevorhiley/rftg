@@ -1,4 +1,4 @@
-package datasvc
+package db
 
 import (
 	"net/url"
@@ -33,13 +33,22 @@ func CreateClient() {
 }
 
 //Setkey sets a key
-func Setkey(s string) (string, error) {
-	err := client.Set("key", s, 0).Err()
+func Setkey(key string, value string) (string, error) {
+	err := client.Set(key, value, 0).Err()
 	if err != nil {
 		panic(err)
 	}
 
-	val, err := client.Get("key").Result()
+	val, err := client.Get(key).Result()
+	if err != nil {
+		return "", err
+	}
+	return val, nil
+}
+
+//Getkey gets specified key from db
+func Getkey(s string) (string, error) {
+	val, err := client.Get(s).Result()
 	if err != nil {
 		return "", err
 	}
